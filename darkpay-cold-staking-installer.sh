@@ -122,7 +122,7 @@ EOF
 
 function create_wallet() {
 	echo -e "${GREY}Creating DarkPay Wallet${NC}"
-	WALLET=$($COIN_PATH$COIN_CLI getnewextaddress '	stakingnode')
+	WALLET=$($COIN_PATH$COIN_CLI getnewextaddress 'stakingnode')
 }
 
 function import_seed() {
