@@ -66,18 +66,17 @@ echo -e "${GREY}Welcome to DarkPay Cold Staking Node installer${NC}"
 }
 
 function download_node() {
-  mkdir /root/.darkpaycoin
   echo -e "${GREY}Downloading and Installing DarkPay Daemon...${NC}"
-  cd /root/.darkpaycoin
-  #cd $TMP_FOLDER #>/dev/null 2>&1
+  cd $TMP_FOLDER >/dev/null 2>&1
   wget -q $COIN_TGZ
-  tar -zxvf $TGZ #>/dev/null 2>&1
+  tar -zxvf $TGZ >/dev/null 2>&1
+  cd darkpay-0.18.0.7/bin/
   chmod +x $COIN_DAEMON
   chmod +x $COIN_CLI
   mv $COIN_DAEMON $COIN_PATH
   mv $COIN_CLI $COIN_PATH
   cd ~ >/dev/null 2>&1
-  #rm -rf $TMP_FOLDER >/dev/null 2>&1
+  rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
 }
 
@@ -95,7 +94,6 @@ After=network.target
 User=root
 Group=root
 Type=forking
-#PIDFile=$CONFIGFOLDER/$COIN_NAME.pid
 $EXSTART
 ExecStop=-$COIN_PATH$COIN_CLI stop
 Restart=always
@@ -124,7 +122,7 @@ EOF
 
 function create_wallet() {
 	echo -e "${GREY}Creating DarkPay Wallet${NC}"
-	WALLET=$($COIN_PATH$COIN_CLI getnewextaddress "stakingnode")
+	WALLET=$($COIN_PATH$COIN_CLI getnewextaddress '	stakingnode')
 }
 
 function import_seed() {
@@ -151,6 +149,7 @@ display_logo
 start_installation
 download_node
 configure_systemd
+sleep 3
 create_wallet
 import_seed
 important_information
