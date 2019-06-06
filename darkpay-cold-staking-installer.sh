@@ -68,15 +68,16 @@ echo -e "${GREY}Welcome to DarkPay Cold Staking Node installer${NC}"
 function download_node() {
   mkdir /root/.darkpaycoin
   echo -e "${GREY}Downloading and Installing DarkPay Daemon...${NC}"
-  cd $TMP_FOLDER >/dev/null 2>&1
+  cd /root/.darkpaycoin
+  #cd $TMP_FOLDER #>/dev/null 2>&1
   wget -q $COIN_TGZ
-  tar -xvzf $TGZ >/dev/null 2>&1
+  tar -xvzf $TGZ #>/dev/null 2>&1
   chmod +x $COIN_DAEMON
   chmod +x $COIN_CLI
   mv $COIN_DAEMON $COIN_PATH
   mv $COIN_CLI $COIN_PATH
   cd ~ >/dev/null 2>&1
-  rm -rf $TMP_FOLDER >/dev/null 2>&1
+  #rm -rf $TMP_FOLDER >/dev/null 2>&1
   clear
 }
 
