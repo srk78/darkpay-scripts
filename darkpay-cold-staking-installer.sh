@@ -149,8 +149,7 @@ display_logo
 start_installation
 download_node
 configure_systemd
-sleep 25
-create_wallet
-sleep 3
+sleep 10
 import_seed
+create_wallet
 important_information
