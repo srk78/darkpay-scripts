@@ -123,6 +123,7 @@ EOF
 function create_wallet() {
 	echo -e "${GREY}Creating DarkPay Wallet${NC}"
 	WALLET=$($COIN_PATH$COIN_CLI getnewextaddress 'stakingnode')
+	clear
 }
 
 function import_seed() {
@@ -140,8 +141,11 @@ function important_information() {
 	echo
 	echo -e "${BLUE}================================================================================================================================${NC}"
 	echo -e "${BLUE}================================================================================================================================${NC}"
-	echo -e "$COIN_NAME Cold Staking Node is up and running${NC}."
-	echo -e "Wallet public key: ${RED}$WALLET${NC}"
+	echo -e "DarkPay Cold Staking Node is up and running.${NC}."
+	echo -e "Below you'll find the information you need to remember.${NC}."
+	echo -e "Wallet Seed: ${RED}$MNEMONIC${NC}."
+	echo -e "Wallet public key: ${GREEN}$WALLET${NC}"
+	echo 
 }
 
 
