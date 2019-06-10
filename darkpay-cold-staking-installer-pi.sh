@@ -137,6 +137,16 @@ echo -e "${GREY}Setting up receiving address...${NC}"
 
 }
 
+function enable_firewall() {
+  echo -e "Installing and setting up firewall to allow ingress on port ${GREEN}$COIN_PORT${NC}"
+  ufw allow 16667/tcp comment "DarkPay Daemon port" >/dev/null
+  ufw allow ssh comment "SSH" >/dev/null 2>&1
+  ufw limit ssh/tcp >/dev/null 2>&1
+  ufw default allow outgoing >/dev/null 2>&1
+  echo "y" | ufw enable >/dev/null 2>&1
+  clear
+}
+
 function important_information() {
 	echo
 	echo -e "${BLUE}================================================================================================================================${NC}"
@@ -156,4 +166,5 @@ configure_systemd
 sleep 10
 import_seed
 create_wallet
+enable_firewall
 important_information
