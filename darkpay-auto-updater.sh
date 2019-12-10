@@ -6,11 +6,6 @@ latestVersion=$(echo $json | jq .clients | jq .darkpayd | jq .version | tr -d \"
 currentVersion=$(/usr/local/bin/darkpay-cli getnetworkinfo | grep subversion | cut -d : -f 3 | cut -d / -f 1)
 currentVersionShort=${currentVersion%.*}
 
-echo "latestVersion:"$latestVersion
-echo "currentVersion:"$currentVersion
-echo "currentVersionShort:"$currentVersionShort
-
-
 if [ "$latestVersion" = "$currentVersionShort"  -o "$latestVersion" = "$currentVersion" ]; then
     echo "Already at latest version." #> /dev/null
 else

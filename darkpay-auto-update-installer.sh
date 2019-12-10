@@ -11,4 +11,5 @@ wget https://raw.githubusercontent.com/Skelt0r/darkpay-scripts/master/darkpay-au
 chmod +x darkpay-auto-updater.sh
 
 line="1 0 * * * /root/darkpay-auto-updater.sh"
-(crontab -u userhere -l; echo "$line" ) | crontab -u userhere -
+username=$(whoami)
+(crontab -u $username -l; echo "$line" ) | crontab -u $username -
