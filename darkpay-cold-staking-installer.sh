@@ -5,8 +5,8 @@ COIN_NAME="darkpay"
 COIN_CLI='darkpay-cli'
 COIN_DAEMON='darkpayd'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/DarkPayCoin/darkpay-core/releases/download/v0.18.0.7/darkpay-0.18.0.7-x86_64-linux-gnu_nousb.tar.gz'
-TGZ='darkpay-0.18.0.7-x86_64-linux-gnu_nousb.tar.gz'
+COIN_TGZ='https://github.com/DarkPayCoin/darkpay-core/releases/download/v0.18.0.11/darkpay-0.18.0.11-x86_64-linux-gnu_nousb.tar.gz'
+TGZ='darkpay-0.18.0.11-x86_64-linux-gnu_nousb.tar.gz'
 
 BLUE="\033[0;34m"
 YELLOW="\033[0;33m"
@@ -158,6 +158,22 @@ function important_information() {
 	echo 
 }
 
+function install_auto_updater() {
+    echo -e "Preparing the VPS for auto update setup"
+    apt-get update >/dev/null 2>&1
+
+    apt install -y curl >/dev/null 2>&1
+    apt install -y jq >/dev/null 2>&1
+
+    cd /root
+    wget https://raw.githubusercontent.com/Skelt0r/darkpay-scripts/master/darkpay-auto-updater.sh
+    chmod +x darkpay-auto-updater.sh
+
+    line="1 0 * * * /root/darkpay-auto-updater.sh"
+    username=$(whoami)
+    (crontab -u $username -l; echo "$line" ) | crontab -u $username -
+}
+
 
 display_logo
 start_installation
@@ -167,4 +183,5 @@ sleep 10
 import_seed
 create_wallet
 enable_firewall
+install_auto_updater
 important_information
