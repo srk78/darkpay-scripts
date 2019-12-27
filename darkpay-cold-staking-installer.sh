@@ -70,7 +70,7 @@ function download_node() {
   cd $TMP_FOLDER >/dev/null 2>&1
   wget -q $COIN_TGZ
   tar -zxvf $TGZ >/dev/null 2>&1
-  cd darkpay-0.18.0.7/bin/
+  cd darkpay-0.18.0.11/bin/
   chmod +x $COIN_DAEMON
   chmod +x $COIN_CLI
   mv $COIN_DAEMON $COIN_PATH
