@@ -5,8 +5,8 @@ COIN_NAME="darkpay"
 COIN_CLI='darkpay-cli'
 COIN_DAEMON='darkpayd'
 COIN_PATH='/usr/local/bin/'
-COIN_TGZ='https://github.com/DarkPayCoin/darkpay-core/releases/download/v0.18.0.7/darkpay-0.18.0.7-arm-linux-gnueabihf.tar.gz'
-TGZ='darkpay-0.18.0.7-arm-linux-gnueabihf.tar.gz'
+COIN_TGZ='https://github.com/DarkPayCoin/darkpay-core/releases/download/v0.18.0.11/darkpay-0.18.0.11-arm-linux-gnueabihf.tar.gz'
+TGZ='darkpay-0.18.0.11-arm-linux-gnueabihf.tar.gz'
 
 BLUE="\033[0;34m"
 YELLOW="\033[0;33m"
@@ -70,7 +70,7 @@ function download_node() {
   cd $TMP_FOLDER >/dev/null 2>&1
   wget -q $COIN_TGZ
   tar -zxvf $TGZ >/dev/null 2>&1
-  cd darkpay-0.18.0.7/bin/
+  cd darkpay-0.18.0.11/bin/
   chmod +x $COIN_DAEMON
   chmod +x $COIN_CLI
   mv $COIN_DAEMON $COIN_PATH
